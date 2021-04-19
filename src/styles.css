@@ -1,0 +1,33 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.user-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.user-list-item {
+  width: 200px;
+  height: 100px;
+  border: 1px solid;
+  margin: 10px;
+}
+
+
+table {
+  border-collapse: collapse;
+  border: 2px solid grey;
+}
+
+th, td {
+  border: 1px solid grey;
+}
+
+a:active, /* активная/посещенная ссылка */
+a:hover,  /* при наведении */
+a{
+  text-decoration: none;
+  color: #666;
+}
