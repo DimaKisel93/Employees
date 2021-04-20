@@ -1,9 +1,10 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import employees from "./reducers/reducer";
+import {rootReducer} from "./reducers/index";
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 export default function configureStore(initialState) {
-  return createStore(employees, initialState, applyMiddleware(thunk));
+  return createStore(rootReducer, initialState, composeWithDevTools(applyMiddleware(thunk)));
 };
 
 

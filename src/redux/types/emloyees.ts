@@ -1,6 +1,6 @@
 export interface EmployeesState{
-    employess: any[];
-    worklog: any[];
+    employees: any[];
+    worklogs: any[];
     loading: boolean;
     error: null | string;
 }

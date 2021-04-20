@@ -1,10 +1,9 @@
 import { combineReducers } from "redux";
-import employees from "./reducer";
+import EmployeesReducer from "./reducer";
 
-const rootReducer = combineReducers({
-  state:employees,
+export const rootReducer = combineReducers({
+  employees: EmployeesReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>
 
-export default rootReducer;

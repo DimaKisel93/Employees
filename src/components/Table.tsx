@@ -1,17 +1,26 @@
-import React from "react";
-import { connect } from "react-redux";
+import React, {useEffect} from "react";
 import { Link } from "react-router-dom";
+import { useTypedSelector } from "../hooks/useTypedSelector";
+import { useActions } from "../hooks/useActions";
+import { sortDate } from "../common/sortEmployees";
+import { formatDate } from "../common/formatDate";
 
-function Table({ employees }) {
+const Table:React.FC = () => {
 
-  const formatDate = (date) => {
-    let arrDate = date.split("-");
-    [arrDate[0], arrDate[2]] = [arrDate[2], arrDate[0]];
-    return arrDate.join(".");
-  };
+  const {employees, loading, error} = useTypedSelector(state => state.employees);
+  const { fetchAllEmployees } = useActions()
 
-  const sortDate = (date) =>
-    date.sort((a, b) => (a.lastName > b.lastName ? 1 : -1));
+  useEffect(() => {
+    fetchAllEmployees()
+  }, [])
+
+  if(loading){
+    return <h1>Идет загрузка...</h1>
+  }
+
+  if(error){
+    return <h1>{error}</h1>
+  }
 
   return (
     <>
@@ -42,8 +51,5 @@ function Table({ employees }) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  employees:state.employess,
-});
 
-export default connect(mapStateToProps, null)(Table);
+export default Table;
